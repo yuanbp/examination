@@ -1,0 +1,4 @@
+@for (str in strs) {
+    <td>${str}</td>
+@}
+${hello}
