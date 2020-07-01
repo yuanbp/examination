@@ -6,6 +6,7 @@ import net.sf.jsqlparser.expression.LongValue;
 import net.sf.jsqlparser.expression.operators.conditional.AndExpression;
 import net.sf.jsqlparser.expression.operators.relational.EqualsTo;
 import net.sf.jsqlparser.parser.CCJSqlParserUtil;
+import net.sf.jsqlparser.parser.Node;
 import net.sf.jsqlparser.schema.Column;
 import net.sf.jsqlparser.schema.Table;
 import net.sf.jsqlparser.statement.Statement;
@@ -252,6 +253,7 @@ public class SqlParserTool {
 
     public static void main(String[] args) throws JSQLParserException {
         String sql = "select * from (select userid,user_age from a) a where a.userid=2";
+        Node node = CCJSqlParserUtil.parseAST(sql);
         SqlType sqlType = SqlParserTool.getSqlType(sql);
         if (sqlType.equals(SqlType.SELECT)) {
             Select statement = (Select) SqlParserTool.getStatement(sql);
